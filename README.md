@@ -1,7 +1,11 @@
 # binaural-bci-walkman
 Binaural audio agent for brain computer interfaces
 
-.. Probably becuase I'd like to walk through nature with an adaptive stream of binaural beats for maximal perceptual learning interfacing.
+## buh why?
+.. Probably becuase I'd like to walk through nature with an adaptive stream of binaural beats for maximal perceptual learning interfacing to tuned flow states.
+
+## Experimental Approach
+Hacking it
 
 ## Technologies Used
 - websockets
