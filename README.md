@@ -11,7 +11,11 @@ While many are focusing on complex synthesis, this project aims at various only 
 
 Binaural beats are essentially an auditory illusion, in that a new sound is perceived which is not presented . Some of the effects you see listed in the wikipedia article are not surprising, for example listening to binaural beats improves frequency detection (perceptual learning).
 
-The tool is meant to simulate a hadamard gate used in quantum computing.
+Steersman Definition: 
+
+Cybernetics: 
+
+The tool is meant to simulate a hadamard gate used in quantum computing, whereby one is able to expand the possibilities of environment navigation through optimal perceptual learning.
 
 ![](imgs/hadamard.png)
 
