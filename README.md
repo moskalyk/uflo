@@ -12,12 +12,13 @@ While many are focusing on complex synthesis, this project aims at various only 
 Binaural beats are essentially an auditory illusion, in that a new sound is perceived which is not presented . Some of the effects you see listed in the wikipedia article are not surprising, for example listening to binaural beats improves frequency detection (perceptual learning).
 
 The tool is meant to simulate a hadamard gate used in quantum computing.
+
 ![](imgs/hadamard.png)
 
 ## Modes of Play
 * Single: Following single trajectory tuned to neurofeedback
 * Layered: Adding Sound dimensions for optimal composition
-* Multiplayer: TODO - p2p connected soundscape for 
+* Multiplayer: TODO - p2p connected soundscape group meditative experience 
 
 ### Technologies Used
 * pytorch
@@ -39,8 +40,8 @@ Alternative model for calm computing.
 Songs are generated on device and saved as a text file. E.g. kilobytes vs. MB, a scale of 10x storage.
 
 ### Hardware Device Examples
-![](imgs/photo_1.png)
-![](imgs/photo_2.png)
+![](imgs/photo_1.jpg)
+![](imgs/photo_2.jpg)
 
 See ARCHITECTURE.md for abstraction decisions.
 
