@@ -118,8 +118,9 @@ Currently under active development.
 * Sounds are generated on device and saved as a text file. E.g. kilobytes vs. MB, a scale of 10x in storage reduction.
 
 #### Sounds like digital drugs?
-“This Snow Crash thing--is it a virus, a drug, or a religion?”
-Juanita shrugs. “What's the difference?”
+> “This Snow Crash thing--is it a virus, a drug, or a religion?” 
+Juanita shrugs. 
+“What's the difference?”
 ― Neal Stephenson, Snow Crash
 
 #### Isn't this the beginning of cyborgism?
