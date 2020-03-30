@@ -128,7 +128,7 @@ Maybe. Just a pragmatic push for another view to take a societal measurement.
 > The making of a synthetic brain requires now little more than time and labour .... Such a machine might be used in the distant future ... to explore regions of intellectual subtlety and complexity at present beyond the human powers .... How will it end? I suggest that the simplest way to find out is to make the thing and see.
 ― Ross Ashby, "Design for a Brain" (1948, 382–83)
 
-#### What does it feel like?
+#### What can it feel like?
 <p align="center">
   <img width="300" height="300" src="imgs/immersion.jpg">
 </p>
