@@ -32,19 +32,7 @@ An excercise tool for those seeking a [free mind](https://www.youtube.com/watch?
   <img width="300" height="300" src="imgs/hadamard.png">
 </p>
 
-## Modes of Play
-* *Single*: Following single signal trajectory tuned via reinforcement agent to neurofeedback (or manual via tuning knob)
-* *Layered*: Adding sound dimensions for optimal composition supported via scynth audio server
-* *Multiplayer*: p2p connected soundscape for group / global meditative / practice experience
-
-### Technologies Used
-* [Pytorch](https://pytorch.org/)
-* [Supercollider / scynth](https://supercollider.github.io/)
-* [Blueberryx brain-computer-interface](https://www.blueberryx.com/)
-* [Rasberry pi](https://www.raspberrypi.org/)
-* [Socket.io](https://socket.io/)
-
-### Philosophy
+## Philosophy
 Open sourcing the concept was the first intention, as consciousness tools should be open and available.
 
 Engaging in open conversation around building for human cognition enhancements.
@@ -52,6 +40,18 @@ Engaging in open conversation around building for human cognition enhancements.
 Documented process for optimal community building around experimental explorers and other audio / livecoding ecosystem.
 
 Seed more people in calm computing states. The greater the collective synchronous, the more mindful we can be for designing systems that work.
+
+### Possible Modes of Play
+* *Single*: Following single signal trajectory tuned via reinforcement agent to neurofeedback (or manual via tuning knob)
+* *Layered*: Adding sound dimensions for optimal composition supported via scynth audio server
+* *Multiplayer*: p2p connected soundscape for group / global meditative / practice experience
+
+## Technologies Used
+* [Pytorch](https://pytorch.org/)
+* [Supercollider / scynth](https://supercollider.github.io/)
+* [Blueberryx brain-computer-interface](https://www.blueberryx.com/)
+* [Rasberry pi](https://www.raspberrypi.org/)
+* [Socket.io](https://socket.io/)
 
 **Signal-Oriented Programming**: Signal programming is used in the same sense as dataflow programming, a signal is meant to represent a synchronous flow of data interrupted by an operating system. 
 
