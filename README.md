@@ -6,7 +6,7 @@
 ---
 
 # uflo
-A binaural beat toolkit for collective consciousness used by the modern [steersman](https://en.wikipedia.org/wiki/Guild_Navigator) in times of [Kairos](https://en.wikipedia.org/wiki/Kairos).
+A binaural beat toolkit for collective consciousness used by the modern practicing [steersman](https://en.wikipedia.org/wiki/Guild_Navigator) in times of [Kairos](https://en.wikipedia.org/wiki/Kairos).
 
 **Steersman**: Navigators are able to use a limited form of [prescience](https://www.merriam-webster.com/dictionary/prescience) to safely navigate interstellar space.
 
