@@ -5,7 +5,7 @@
 
 ---
 
-# uflo
+# ~uflo
 A binaural beat toolkit for collective consciousness used by the modern practicing [steersman](https://en.wikipedia.org/wiki/Guild_Navigator) in times of [Kairos](https://en.wikipedia.org/wiki/Kairos).
 
 **Steersman**: Navigators are able to use a limited form of [prescience](https://www.merriam-webster.com/dictionary/prescience) to safely navigate interstellar space.
@@ -14,9 +14,7 @@ A binaural beat toolkit for collective consciousness used by the modern practici
 
 **Goal**: Personal infrastructure for open mindful computing. Augment ones practice to uncover new states through an objective medium of measurement like [fNIRS](https://en.wikipedia.org/wiki/Functional_near-infrared_spectroscopy). How? Subtle signal assistance.
 
-Excercise the Mind
-
-
+An excercise tool for those seeking a [free mind](https://www.youtube.com/watch?v=YThxh8BQKZE) using accesible audio signals.
 
 ## Inspiration
 
@@ -57,11 +55,13 @@ Seed more people in calm computing states. The greater the collective synchronou
 
 **Signal-Oriented Programming**: Signal programming is used in the same sense as dataflow programming, a signal is meant to represent a synchronous flow of data interrupted by an operating system. 
 
-> When a signal is sent, the operating system interrupts the target process' normal flow of execution to deliver the signal. 
-
-<p float="left">
-  <img width="430" height="350" src="imgs/photo_1.jpg">
+<p align="center">
+  <img width="700" height="500" src="imgs/beats.gif">
 </p>
+
+When a signal is sent, the operating system (brain) interrupts the target process' normal flow of execution to deliver the signal. The more ones mind is out of sync / less responsive to social constructs, the greater the use of this therapy as it's the simple and non intrusive.
+
+Excercised interruption requires an increase in more on this [here](https://medium.com/colloquium/is-it-ever-natural-to-be-late-5aed5ff11169)
 
 ### Hardware Design Examples
 Integrated clean natural feel. Lab, spaceship, beach, or forest.
@@ -99,10 +99,11 @@ Currently under active development.
 - [ ] multiplayer mode
 - [ ] refactor to load different flow paths
 
-### Other Research
-- Neurosity https://github.com/neurosity/
-- Binaural Effectiveness: 
-- 
+### Other Relevant Research / Tools
+- [Blueberry](https://www.kickstarter.com/projects/jdchibuk/smart-glasses-that-help-you-relax-and-perform)
+- [Neurosity](https://github.com/neurosity/)
+- [Binaural Effectiveness](https://github.com/neurohazardous/binauralBeats)
+- etc.
 
 ### FAQ
 
