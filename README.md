@@ -14,6 +14,10 @@ A binaural beat toolkit for collective consciousness used by the modern [steersm
 
 **Goal**: Personal infrastructure for open mindful computing. Augment ones practice to uncover new states through an objective medium of measurement like [fNIRS](https://en.wikipedia.org/wiki/Functional_near-infrared_spectroscopy). How? Subtle signal assistance.
 
+Excercise the Mind
+
+
+
 ## Inspiration
 
 **Device Design** : Somewhere between an e-ink kindle & touch phone, like a pokedex but for our world - to capture thoughts, privately, on a walk. Producing a single copy of memories to share once connected, if need be with a level of pseudo-anonymity. Ultimately, a hardware extension that augments the embodied, not so much as a void / hole for attention capture. Enabling agents of reflexivity.
@@ -55,8 +59,12 @@ Seed more people in calm computing states. The greater the collective synchronou
 
 > When a signal is sent, the operating system interrupts the target process' normal flow of execution to deliver the signal. 
 
+<p float="left">
+  <img width="430" height="350" src="imgs/photo_1.jpg">
+</p>
+
 ### Hardware Design Examples
-Integrated clean nature feel. Lab or forest.
+Integrated clean natural feel. Lab, spaceship, beach, or forest.
 
 <p float="left">
   <img width="430" height="350" src="imgs/photo_1.jpg">
@@ -70,6 +78,7 @@ See [ARCHITECTURE.md]() for abstraction decisions.
 * [Rasberry Pi](https://www.amazon.ca/Raspberry-MS-004-00000024-Pi-Model-Motherboard/dp/B01LPLPBS8/)
 * [Battery](https://www.amazon.ca/gp/product/B07BSG7V3J/)
 * [MicroSD](https://www.amazon.ca/Sandisk-SDSQUAR-032G-GN6MA-Ultra-Micro-Adapter/dp/B073JWXGNT/)
+* Knob (note: currently is a shaved cork and does nothing, I had to get creative in quarantine).
 
 ### Device Setup
 * install Rasbian on SD
@@ -97,10 +106,6 @@ Currently under active development.
 
 ### FAQ
 
-
-#### Isn't this the beginning of cyborgism?
-Maybe. Just a push for another view to measure.
-
 #### Why not use a mobile app?
 * Possible Soundscape generated from the audio server [scsynth](https://supercollider.github.io/) can be live manipulated via neurofeedback.
 * Building process / customization is important for community of hackers.
@@ -110,3 +115,19 @@ Maybe. Just a push for another view to measure.
 * ARM based has RISC-V open instruction set
 * Easy loading of WASM as linear-signal transforms (future).
 * Sounds are generated on device and saved as a text file. E.g. kilobytes vs. MB, a scale of 10x in storage reduction.
+
+#### Sounds like digital drugs?
+“This Snow Crash thing--is it a virus, a drug, or a religion?”
+Juanita shrugs. “What's the difference?”
+― Neal Stephenson, Snow Crash
+
+#### Isn't this the beginning of cyborgism?
+Maybe. Just a pragmatic push for another view to take a societal measurement.
+
+> The making of a synthetic brain requires now little more than time and labour .... Such a machine might be used in the distant future ... to explore regions of intellectual subtlety and complexity at present beyond the human powers .... How will it end? I suggest that the simplest way to find out is to make the thing and see.
+― Ross Ashby, "Design for a Brain" (1948, 382–83)
+
+#### What does it feel like?
+<p align="center">
+  <img width="300" height="300" src="imgs/immersion.jpg">
+</p>
