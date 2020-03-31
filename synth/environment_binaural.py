@@ -111,7 +111,14 @@ freq_i = 2
 
 sio = socketio.Client()
 # sio = socketio.Server()
-sio.connect('http://localhost:3003')
+
+while True:
+	try:
+		sio.connect('http://localhost:3003')
+		break;
+	except Exception as e:
+		print('Retrying connection...')
+	time.sleep( 2 )
 
 server = Server()
 

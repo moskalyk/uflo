@@ -1,6 +1,28 @@
 from environment_binaural import BandSpace
+import argparse
+
+# parser.add_argument('integers', metavar='N', type=int, nargs='+',help='an integer for the accumulator')
+parser.add_argument('--composed', help='play binaural')
+parser.add_argument('--binaural', help='play binaural')
+parser.add_argument('--multiplayer', help='play binaural')
+
+args = parser.parse_args()
+print(args.accumulate(args.integers))
+
+
 
 if __name__ == '__main__':
+
+	if args.composed:
+		print('composed')
+	else:
+		print('nope')
+
+	if args.binaural:
+		print('binaural')
+
+	if args.multiplayer:
+		print('multiplayer')
 
 	experiment_name = input('What should we call this session? > ')
 	print("Beginning the Experiment: " + experiment_name)
