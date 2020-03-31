@@ -111,11 +111,8 @@ def connect():
     send_ping()
 
 @sio.event
-def chat_message(sid):
-    # print("message ", sid)
-    # print(sid['data'])
+def io_message(sid):
     fnirs_buffer.append(sid['data'])
-    # print("message ", data)
 
 @sio.event
 def pong_from_server(data):
@@ -124,8 +121,6 @@ def pong_from_server(data):
     print('latency is {0:.2f} ms'.format(latency * 1000))
     sio.sleep(1)
     send_ping()
-
-# NeuronSpace() // Options parameters
 
 class BandSpace(object):
 

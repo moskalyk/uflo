@@ -110,7 +110,6 @@ fnirs_total = []
 freq_i = 2
 
 sio = socketio.Client()
-# sio = socketio.Server()
 
 while True:
 	try:
@@ -137,7 +136,7 @@ def connect():
     send_ping()
 
 @sio.event
-def chat_message(sid):
+def io_message(sid):
     # print("message ", sid)
     # print(sid['data'])
     fnirs_buffer.append(sid['data'])
@@ -497,28 +496,6 @@ class SoundSpace(object):
 				self.synth.set(param, new_param)
 			else:
 				self.is_steady = True
-				
-
-
-			# # parts_new = self.parts * random.uniform(0.1, 5)
-			# parts_new = self.parts * self.parts*(1 + self.mul)
-
-			# # self.freq = self.freq*(1 + self.mul)
-			# # self.synth.set(param, parts_new)
-			# old_osc = self.synth.get("osc")
-			# print("old_osc")
-			# old_osc = old_osc if old_osc is not None else 0
-
-			# print(old_osc)
-			# print(self.synth.get("osc"))
-			# print(random.uniform(1 - dev, 1 + dev))
-
-			# new_osc = old_osc * random.uniform(1 - dev, 1 + dev)
-			
-			# print(new_osc)
-
-			# self.synth.set("osc", new_osc)
-			# self.synth.set("gain", new_osc)
 
 			print("( + ) INCREASE_PARAM")
 			# self.group.free()
@@ -535,38 +512,6 @@ class SoundSpace(object):
 				self.synth.set(param, new_param)
 			else:
 				self.is_steady = True
-			# # get old param
-			# old_param = self.synth.get(param)
-
-			# # update param
-			# new_param = old_param * (1 - dev)
-
-			# print("checking_min")
-			# if not new_param < default * 1.5:
-
-			# 	print(new_param > default * 1.5)
-
-			# 	print('Setting ' + param + " to " + str(new_param) + " from " + str(old_param))
-
-			# # set param
-			# 	self.synth.set(param, new_param)
-
-			# parts_new = self.parts * self.parts*(1 - self.mul)
-
-			# # self.freq = self.parts * self.parts*(1 - self.mul)
-			# # self.synth.set(param, self.freq)
-			# old_osc = self.synth.get("osc")
-			# print("old_osc")
-			# old_osc = old_osc if old_osc is not None else 0
-			# print(old_osc)
-			# print(self.synth.get("osc"))
-			# print(random.uniform(1 - dev, 1 + dev))
-
-			# new_osc = old_osc * random.uniform(1 - dev, 1 + dev)
-			# print(new_osc)
-			# self.synth.set("osc", new_osc)
-			# self.synth.set("gain", new_osc)
-
 			print("( - ) DECREASE_PARAM")
 			# self.group.free()
 
@@ -575,63 +520,3 @@ class SoundSpace(object):
 			# self.synth.set(param, self.freq)
 
 			print("( = ) SAME_PARAM")
-			# self.group.free()
-
-		# if action == "INCREASE_PARAM":
-		# 	# parts_new = self.parts * random.uniform(0.1, 5)
-		# 	parts_new = self.parts * self.parts*(1 + self.mul)
-
-		# 	# self.freq = self.freq*(1 + self.mul)
-		# 	# self.synth.set(param, parts_new)
-		# 	old_osc = self.synth.get("osc")
-		# 	print("old_osc")
-		# 	old_osc = old_osc if old_osc is not None else 0
-
-		# 	print(old_osc)
-		# 	print(self.synth.get("osc"))
-		# 	print(random.uniform(1 - dev, 1 + dev))
-
-		# 	new_osc = old_osc * random.uniform(1 - dev, 1 + dev)
-			
-		# 	print(new_osc)
-
-		# 	self.synth.set("osc", new_osc)
-		# 	self.synth.set("gain", new_osc)
-
-		# 	print("( + ) INCREASE_PARAM")
-		# 	# self.group.free()
-
-		# elif action == "DECREASE_PARAM":
-
-		# 	parts_new = self.parts * self.parts*(1 - self.mul)
-
-		# 	# self.freq = self.parts * self.parts*(1 - self.mul)
-		# 	# self.synth.set(param, self.freq)
-		# 	old_osc = self.synth.get("osc")
-		# 	print("old_osc")
-		# 	old_osc = old_osc if old_osc is not None else 0
-		# 	print(old_osc)
-		# 	print(self.synth.get("osc"))
-		# 	print(random.uniform(1 - dev, 1 + dev))
-
-		# 	new_osc = old_osc * random.uniform(1 - dev, 1 + dev)
-		# 	print(new_osc)
-		# 	self.synth.set("osc", new_osc)
-		# 	self.synth.set("gain", new_osc)
-
-		# 	print("( - ) DECREASE_PARAM")
-		# 	# self.group.free()
-
-		# elif action == "SAME_PARAM":
-		# 	# self.freq = self.freq*(1 - self.mul)
-		# 	# self.synth.set(param, self.freq)
-
-		# 	print("( = ) SAME_PARAM")
-		# 	# self.group.free()
-
-
-		# elif action == "DECREASE_VOLUME":
-		# 	print("DECREASE_VOLUME")
-			
-		# elif action == "INCREASE_VOLUME":
-		# 	print("INCREASE_VOLUME")
