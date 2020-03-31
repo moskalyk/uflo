@@ -133,3 +133,5 @@ Maybe. Just a pragmatic push for another view to take a societal measurement.
 <p align="center">
   <img width="300" height="300" src="imgs/immersion.jpg">
 </p>
+
+A special thanks to [John David Chibuk](https://github.com/chibuk) and the [Blueberry](https://github.com/blueberryxtech) team during experimentation process.
