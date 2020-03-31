@@ -1,12 +1,13 @@
-# Architecture Abstraction: Multi-Tiered
+# Architecture
+
+## Abstraction: Multi-Tiered
 
 Considering the cross hash, is meant to mimic a constrained version of how a reverse fourier transform works. The subtle agent guidance by varying based on neurofeedback measurement creates more plasticity in the way the brain 'accepts' tone and sound via systematic constraints.
 
 
-
 The guided sound 'waves' amount to a layered sound the user will listen to based on relative agent reward response.
 
-# Architecture Abstraction: Single Trajectory
+## Abstraction: Single Trajectory
 
 In the single trajectory, the agent only acts on the tuning of a single band. The variation of frequency of the band dictates the 3rd binaural sound perceived.
 
@@ -25,11 +26,8 @@ frequency hz ranges
 
 The experience can be thought of as 
 
-
-Result
-
-### Future Possibility
-
+## Abstraction: Multi-player
+TODO
 
 # Architecture Sub-system
 
