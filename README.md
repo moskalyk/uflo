@@ -61,9 +61,7 @@ When a signal is sent, the operating system (brain) interrupts the target proces
 
 Hypothesis: The more ones mind is out of sync / less responsive to constructs, the greater the use of this therapy as it's the simple and non intrusive.
 
-Excercised interruption requires a reestablishment of normal time based protocols. 
-
-More on this [here](https://medium.com/colloquium/is-it-ever-natural-to-be-late-5aed5ff11169)
+Excercised interruption requires a reestablishment of normal time based protocols for synchrony assistance in cultural adaptation. More on this [here](https://medium.com/colloquium/is-it-ever-natural-to-be-late-5aed5ff11169)
 
 ### Hardware Design Examples
 Integrated clean natural feel. Lab, spaceship, beach, or forest.
@@ -80,7 +78,7 @@ See [ARCHITECTURE.md]() for abstraction decisions.
 * [Rasberry Pi](https://www.amazon.ca/Raspberry-MS-004-00000024-Pi-Model-Motherboard/dp/B01LPLPBS8/)
 * [Battery](https://www.amazon.ca/gp/product/B07BSG7V3J/)
 * [MicroSD](https://www.amazon.ca/Sandisk-SDSQUAR-032G-GN6MA-Ultra-Micro-Adapter/dp/B073JWXGNT/)
-* Knob (note: currently is a shaved cork and does nothing, I had to get creative in quarantine).
+* Mechanical Knob (note: currently this is a shaved cork and does nothing, I had to get creative in quarantine).
 
 ### Device Setup
 * install Rasbian on SD
