@@ -18,14 +18,17 @@ An excercise tool for those seeking a [free mind](https://www.youtube.com/watch?
 
 ## How to Run
 
-There are 2 approaches to running the software. One, on desktop, the other on rasberry pi. In order to use the python-supercollider, the liblo library is required for the underlying OSC communications.
+There are 2 approaches to running the software: 1) desktop (working), or 2) Rasberry Pi (almost)
 
-### Device Setup: Desktop
+Note: In order to use the python-supercollider, the liblo library is required for the underlying OSC communications.
+
+### Device Setup: Desktop with bci
 * clone repo `$ git clone https://github.com/moskalyk/uflo.git`
 * `$ cd uflo`
 * `$ pip3 install -r requirements.txt`
 * open supercollider and run one of the [sounds](/sounds) (e.g. single_player.scd)
-* in one terminal, run one of socket [streamers](/streamer) to connect to a bci SDK
+* setup bci device
+* in one terminal, run one of socket [streamers](/streamer) to connect to a bci SDK, e.g. [blueberry](https://github.com/blueberryxtech/blueberry-js-sdk)
 * run `python index.py --type singleplayer`
 * be present
 
@@ -39,6 +42,7 @@ There are 2 approaches to running the software. One, on desktop, the other on ra
 * run `python index.py --type singleplayer`
 * be present
 
+TODO: Run software without bci neurofeedback input.
 
 ## Inspiration
 
@@ -131,7 +135,8 @@ Currently under active development.
 * Positive constraint of not being connected to telecommunications, limited to BLE.
 * Possible easy loading of WASM as linear-signal transforms (future).
 * Sounds are generated on device from saved text file. E.g. kilobytes vs. megabytes per experience.
-* Possibility to set up [mesh networking software](https://github.com/tomeshnet/prototype-cjdns-pi) for steersmen to seed adoption of p2p internet of relayers in a city.
+* Possibility to set up [mesh networking software](https://github.com/tomeshnet/prototype-cjdns-pi) for steersmen to seed adoption of p2p internet as relayers in a city.
+* Possibility for local sound file updates via over the air [radio waves communication](https://en.wikipedia.org/wiki/Radio_wave) using AX.25 packet radio protocol connected via USB e.g. [chattervox](https://www.npmjs.com/package/chattervox)
 
 #### Sounds like digital drugs?
 > “This Snow Crash thing--is it a virus, a drug, or a religion?” 
