@@ -9,7 +9,7 @@ The abstraction for which was chosen is meant to mimic a constrained version of 
   <img width="400" height="300" src="imgs/fourier.png">
 </p>
 
-During this process, the subtle agent guidance by variance based on neurofeedback measurement helps to create more plasticity in the way the brain can 'accepts' tone and sound via constraints. 
+During this process, the subtle agent guidance by variance based on neurofeedback measurement helps to create more plasticity in the way the brain can 'accepts' tone and sound via guided constraints. 
 
 <p align="center">
   <img width="800" height="500" src="imgs/abstraction.png">
