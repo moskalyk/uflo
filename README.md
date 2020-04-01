@@ -4,6 +4,7 @@
 </p>
 
 ---
+[![Gitter](https://badges.gitter.im/uflo-steersman/community.svg)](https://gitter.im/uflo-steersman/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 # ~uflo
 A binaural beat toolkit for collective consciousness used by the modern practicing [Steersman](https://en.wikipedia.org/wiki/Guild_Navigator) in times of [Kairos](https://en.wikipedia.org/wiki/Kairos).
