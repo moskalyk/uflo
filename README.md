@@ -125,6 +125,8 @@ Currently under active development.
 - [Binaural Effectiveness](https://github.com/neurohazardous/binauralBeats)
 - etc.
 
+A special thanks to [John David Chibuk](https://github.com/chibuk) and the [Blueberry](https://github.com/blueberryxtech) team for active support during experimentation process.
+
 ### FAQ
 
 #### Why not use a mobile app?
@@ -151,8 +153,8 @@ Maybe. Just a pragmatic push for another view to take a societal measurement.
 ― Ross Ashby, "Design for a Brain" (1948, 382–83)
 
 #### What can it feel like?
+art, technology, both?
+
 <p align="center">
   <img width="300" height="300" src="imgs/immersion.jpg">
 </p>
-
-A special thanks to [John David Chibuk](https://github.com/chibuk) and the [Blueberry](https://github.com/blueberryxtech) team during experimentation process.
