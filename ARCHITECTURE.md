@@ -12,7 +12,7 @@ The abstraction for which was chosen is meant to mimic a constrained version of 
 During this process, the subtle agent guidance by variance based on neurofeedback measurement helps to create more plasticity in the way the brain can 'accepts' tone and sound via constraints. 
 
 <p align="center">
-  <img width="600" height="500" src="imgs/abstraction.png">
+  <img width="800" height="500" src="imgs/abstraction.png">
 </p>
 
 The guided sound 'waves' amount to a layered sound the user will listen to based on relative agent reward response.
