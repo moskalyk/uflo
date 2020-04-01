@@ -12,7 +12,7 @@ The abstraction for which was chosen is meant to mimic a constrained version of 
 During this process, the subtle agent guidance by variance based on neurofeedback measurement helps to create more plasticity in the way the brain can 'accepts' tone and sound via constraints. 
 
 <p align="center">
-  <img width="500" height="400" src="imgs/abstraction.png">
+  <img width="600" height="500" src="imgs/abstraction.png">
 </p>
 
 The guided sound 'waves' amount to a layered sound the user will listen to based on relative agent reward response.
@@ -33,12 +33,13 @@ frequency hz ranges
 ~beta3 = 24;    // 20.5 - 28
 ~gamma = 35;    // 32 - 100. Visual awareness, transcendental mental states
 ```
+This process of creating difference between 2 frequency functions, can be abstractly modelled after the process of integration. By creating difference in perception, one is able to reason in higher dimensions from a place of increased complexity.
 
 <p align="center">
   <img width="400" height="300" src="imgs/digInFirstFundamentalTheoremOfCalculus-figure0.svg">
 </p>
 
-The experience can be graphed by recording hemodynamic response to frequency in hz, with subtle changes to neuro response.
+The experience can be graphed by recording hemodynamic response to frequency in hz, with subtle changes to neuro response with subtle noticeable differences.
 
 <p align="center">
   <img width="700" height="500" src="imgs/plot_fnirs.png">
