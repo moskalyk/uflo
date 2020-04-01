@@ -16,6 +16,30 @@ A binaural beat toolkit for collective consciousness used by the modern practici
 
 An excercise tool for those seeking a [free mind](https://www.youtube.com/watch?v=YThxh8BQKZE) using accesible audio signals.
 
+## How to Run
+
+There are 2 approaches to running the software. One, on desktop, the other on rasberry pi. In order to use the python-supercollider, the liblo library is required for the underlying OSC communications.
+
+### Device Setup: Desktop
+* clone repo `$ git clone https://github.com/moskalyk/uflo.git`
+* `$ cd uflo`
+* `$ pip3 install -r requirements.txt`
+* open supercollider and run one of the [sounds](/sounds) (e.g. single_player.scd)
+* in one terminal, run one of socket [streamers](/streamer) to connect to a bci SDK
+* run `python index.py --type singleplayer`
+* be present
+
+### Device Setup: Rasberry Pi
+* install Rasbian on SD
+* install Supercollider on pi
+* install [LCD Screen Show](https://github.com/goodtft/LCD-show)
+* install Python 3
+* clone repo `$ git clone https://github.com/moskalyk/uflo.git`
+* create desktop icons for easy start script
+* run `python index.py --type singleplayer`
+* be present
+
+
 ## Inspiration
 
 **Device Design** : Somewhere between an e-ink kindle & touch phone, like a pokedex but for our world - to capture thoughts, privately, on a walk. Producing a single copy of memories to share once connected, if need be with a level of pseudo-anonymity. Ultimately, a hardware extension that augments the embodied, not so much as a void / hole for attention capture. Enabling agents of reflexivity.
@@ -78,16 +102,8 @@ See [ARCHITECTURE.md]() for abstraction decisions.
 * [Rasberry Pi](https://www.amazon.ca/Raspberry-MS-004-00000024-Pi-Model-Motherboard/dp/B01LPLPBS8/)
 * [Battery](https://www.amazon.ca/gp/product/B07BSG7V3J/)
 * [MicroSD](https://www.amazon.ca/Sandisk-SDSQUAR-032G-GN6MA-Ultra-Micro-Adapter/dp/B073JWXGNT/)
+* [USB Microphone](https://www.amazon.ca/SunFounder-Microphone-Raspberry-Recognition-Software/dp/B01KLRBHGM)
 * Mechanical Knob (note: currently this is a shaved cork and does nothing, I had to get creative in quarantine).
-
-### Device Setup
-* install Rasbian on SD
-* install Supercollider on pi
-* install [LCD Screen Show](https://github.com/goodtft/LCD-show)
-* install Python 3
-* clone repo
-* create desktop icons for easy start
-* run `python index.py`
 
 ### Development Status
 What began as a concept at an [EthGlobal hackathon](https://devpost.com/software/yourflow), winning a prize for trustless computation of neurofeedback, seeded the concept for further exploration in the design process.
@@ -115,6 +131,7 @@ Currently under active development.
 * Positive constraint of not being connected to telecommunications, limited to BLE.
 * Possible easy loading of WASM as linear-signal transforms (future).
 * Sounds are generated on device from saved text file. E.g. kilobytes vs. megabytes per experience.
+* Possibility to set up [mesh networking software](https://github.com/tomeshnet/prototype-cjdns-pi) for steersmen to seed adoption of p2p internet of relayers in a city.
 
 #### Sounds like digital drugs?
 > “This Snow Crash thing--is it a virus, a drug, or a religion?” 

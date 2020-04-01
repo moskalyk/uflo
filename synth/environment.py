@@ -5,6 +5,7 @@ from agent import Agent
 import numpy as np
 import random
 import time
+import os
 
 action_set = [
 	"INCREASE_PARAM",
@@ -12,8 +13,10 @@ action_set = [
 	"SAME_PARAM",
 ]
 
-DATA_LOCATION = "/home/vgrok/Projects/neuro-club/neuro-analysis/raw_data/"
+DATA_LOCATION = os.getcwd() + "/raw_data/"
+SOUND_LOCATION = os.getcwd() + "/raw_sound/"
 
+# TODO: abstract into seperate file
 sound_params = {
 	0 : {
 		"type": "dust",
@@ -70,13 +73,22 @@ sound_params = {
 
 freqs = [
 	1,
-	5.5,
+	# 5.5,
 	7.83,
-	9,
+	# 9,
 	14.3,
-	10,
-	14,
-	18
+	# 10,
+	# 14, # beta1 
+	# 18, # beta2
+
+	24,
+	# 
+	33.8,
+
+	40,
+	50,
+	70,
+	100
 ]
 
 from supercollider import Server, Synth, Buffer, AudioBus, ADD_TO_TAIL, Group
@@ -85,17 +97,31 @@ import random
 from matplotlib import pyplot as plt
 import socketio
 
-n_episodes = 4
-episode_length = 2 
+n_episodes = 5
+episode_length = 2
+observation_time_delay = 10
+observeration_window = 15
+moving_average_window = 5
 
 
 # TODO: include in a MeatSpace variable and instantiate in MindSpace
 fnirs_buffer = [0,0,0,0,0]
+freq_buffer = []
 fnirs_total = []
-observeration_window = 20
 
+freq_i = 2
+
+
+# TODO: abstract into seperate file
 sio = socketio.Client()
-sio.connect('http://localhost:3002')
+
+while True:
+	try:
+		sio.connect('http://localhost:3003')
+		break;
+	except Exception as e:
+		print('Retrying connection...')
+	time.sleep( 2 )
 
 server = Server()
 
@@ -112,7 +138,11 @@ def connect():
 
 @sio.event
 def io_message(sid):
+    # print("message ", sid)
+    # print(sid['data'])
     fnirs_buffer.append(sid['data'])
+    freq_buffer.append(freqs[freq_i])
+    # print("message ", data)
 
 @sio.event
 def pong_from_server(data):
@@ -122,21 +152,35 @@ def pong_from_server(data):
     sio.sleep(1)
     send_ping()
 
+# TODO: abstract into seperate utility file
+def moving_average(x, w):
+    return np.convolve(x, np.ones(w), 'valid') / w
+
+
 class BandSpace(object):
 
-	def __init__(self, actions, experiment_name='ex'):
+	def __init__(self, actions, experiment_name='ex', experiment_type='bin'):
 		# self.agent = Agent(lr = 0.01, input_dims=[5], gamma= 0.99, n_actions=actions, l1_size = 128, l2_size = 128) 
 		self.band_history_scores = []
 		score = 0
 		self.mind_env = MindSpace()
 		self.bands = []
 		self.experiment_name = experiment_name
+		self.experiment_type = experiment_type
+
+		fnirs_buffer = []
+		freq_buffer = []
 
 
 	def compose(self):
-		while 1:
-			time.sleep(2)
-			print("composing...")
+		if self.experiment_type == 'bin':
+
+			self.clear_band_space()
+
+		else:
+			while 1:
+				time.sleep(2)
+				print("composing...")
 		# get all params and add sounds in sequence based on normalized weights
 
 
@@ -147,25 +191,50 @@ class BandSpace(object):
 		print('Scores')
 		print(self.band_history_scores)
 		print(fnirs_buffer)
+		print('freqs')
+		print(freq_buffer)
 
 		if(len(fnirs_buffer) > 5 ):
 		# Save
 			np.savetxt(DATA_LOCATION + self.experiment_name + '.csv', np.array(fnirs_buffer).astype(np.float), delimiter=',')
+			np.savetxt(SOUND_LOCATION + self.experiment_name + '_sound.csv', np.array(freq_buffer).astype(np.float), delimiter=',')
 
 		# np.savetxt('test.out', x, delimiter=',')
 
-		# plot
-		plt.plot(np.hstack(self.band_history_scores))
-		plt.savefig('plot_rewards.png')
-		plt.figure()
-		plt.plot(np.array(fnirs_buffer[5:], dtype=float))
+		if len(self.band_history_scores) > 0:
+			# 1st plot of rewards
+			plt.plot(np.hstack(self.band_history_scores))
+			plt.savefig('plot_rewards.png')
+			plt.figure()
+
+		# 2nd plot
+
+
+		fig, ax1 = plt.subplots()
+
+		ax2 = ax1.twinx()
+
+		ax1.plot(np.array(fnirs_buffer[5:], dtype=float),'g-')
+		ax2.plot(np.array(freq_buffer, dtype=float),'b-')
+
+		ax1.set_xlabel('sample')
+		ax1.set_ylabel('fnirs', color='g')
+		ax2.set_ylabel('frequency', color='b')
+
 		plt.savefig('plot_fnirs.png')
 
 	def new_band(self, band_idx):
 		print('New Band with index ' + str(band_idx))
 		self.mind_env.learn_new_sound(band_idx)
 
-		agent = Agent(lr = 0.1, input_dims=[20], gamma= 0.99, n_actions=3, l1_size = 128, l2_size = 128) 
+		# input_dims = int(observeration_window / moving_average_window)
+		input_dims = observeration_window - (moving_average_window - 1)
+		print('input_dims')
+		print(input_dims)
+		print(observeration_window)
+		print(moving_average_window)
+		# prin(print)
+		agent = Agent(lr = 0.1, input_dims=[ input_dims ], gamma= 0.99, n_actions=3, l1_size = 128, l2_size = 128) 
 
 		score_history = []
 		score = 0
@@ -209,7 +278,7 @@ class BandSpace(object):
 
 class MindSpace(object):
 
-	def __init__(self, episode_length = episode_length, observation_time_delay = 2, steady_count_max = 4):
+	def __init__(self, episode_length = episode_length, observation_time_delay = observation_time_delay, steady_count_max = 4):
 
 		self.sound_space = SoundSpace()
 		self.possibleActions = action_set
@@ -257,8 +326,6 @@ class MindSpace(object):
 
 		# increment episode
 		self.episode_count += 1
-		# print('episode count')
-		# print(self.episode_count)
 		print('Reward')
 		print(reward)
 
@@ -286,6 +353,21 @@ class MindSpace(object):
 		# obs = [random.random() for i in range(window)]
 		obs = fnirs_buffer[-window:]
 		parsed_obs = []
+
+		# Look at rolling moving_average
+		print('PRINTING')
+
+		print(np.array(obs).astype(np.float))
+		print(len(np.array(obs).astype(np.float)))
+		print("moving_average_window")
+		print(moving_average_window)
+
+		obs_moving_average = moving_average(np.array(obs).astype(np.float), moving_average_window)
+		obs = obs_moving_average
+
+		print(np.array(obs).astype(np.float))
+		print(len(np.array(obs).astype(np.float)))
+
 
 		for i in range(window):
 			# print(obs)
@@ -328,6 +410,8 @@ class SoundSpace(object):
 		self.synth = None
 		self.synths = []
 
+		
+
 	def add_sound(self, index = -1):
 		print('ADDING_SOUND')
 
@@ -349,7 +433,8 @@ class SoundSpace(object):
 
 			opts = {}
 			
-			opts[params['param']] = params['default']
+			# opts[params['param']] = params['default']
+			opts['diff'] = params['default']
 			# if == 
 			opts['gain'] = 0.5
 
@@ -381,6 +466,8 @@ class SoundSpace(object):
 		self.group.free()
 
 	def perform_action(self, action):
+		global freq_i
+
 		print("performing action")
 		print(self.synth_index)
 
@@ -391,43 +478,43 @@ class SoundSpace(object):
 
 		if action == "INCREASE_PARAM":
 
-			# get old param
-			old_param = self.synth.get(param)
+			# # get old param
+			# old_param = self.synth.get(param)
 
-			# update param
-			new_param = old_param * (1 + dev)
+			# # update param
+			# new_param = old_param * (1 + dev)
 
-			print("checking_max")
+			# print("checking_max")
 
-			if not new_param > default * 1.5:
-				# if new_param > default
+			if freq_i is not (len(freqs) - 1):
+			# 	# if new_param > default
+				freq_i += 1
+				new_param = freqs[freq_i]
+				print('Setting ' + param + " to " + str(new_param))
+			# 	# set param
 
-				print('Setting ' + param + " to " + str(new_param) + " from " + str(old_param))
-				# set param
 				self.synth.set(param, new_param)
+			else:
+				self.is_steady = True
 
 			print("( + ) INCREASE_PARAM")
 			# self.group.free()
 
 		elif action == "DECREASE_PARAM":
 
-			# get old param
-			old_param = self.synth.get(param)
+			if freq_i is not 0:
 
-			# update param
-			new_param = old_param * (1 - dev)
+				freq_i -= 1
+				new_param = freqs[freq_i]
+				print('Setting ' + param + " to " + str(new_param))
+			# 	# set param
 
-			print("checking_min")
-			if not new_param < default * 1.5:
-
-				print(new_param > default * 1.5)
-
-				print('Setting ' + param + " to " + str(new_param) + " from " + str(old_param))
-
-			# set param
 				self.synth.set(param, new_param)
+			else:
+				self.is_steady = True
 			print("( - ) DECREASE_PARAM")
 			# self.group.free()
 
 		elif action == "SAME_PARAM":
+
 			print("( = ) SAME_PARAM")
