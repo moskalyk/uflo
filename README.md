@@ -8,7 +8,7 @@
 # ~uflo
 A binaural beat toolkit for collective consciousness used by the modern practicing [steersman](https://en.wikipedia.org/wiki/Guild_Navigator) in times of [Kairos](https://en.wikipedia.org/wiki/Kairos).
 
-**Steersman**: Navigators are able to use a limited form of [prescience](https://www.merriam-webster.com/dictionary/prescience) to safely navigate interstellar space.
+**Steersman**: Derived from [Dune](https://en.wikipedia.org/wiki/Dune_(franchise)), Steersman, or, Navigators, are fictional humanoids able to use a limited form of [prescience](https://www.merriam-webster.com/dictionary/prescience) to safely navigate interstellar space.
 
 **Kairos**: Kairos refers to the opportune time and/or place — that is, the right or appropriate time to say or do the right or appropriate thing.
 
@@ -22,28 +22,26 @@ An excercise tool for those seeking a [free mind](https://www.youtube.com/watch?
 
 **Abstract Simplicity** : While many are focusing on complex synthesis of sounds, this project aims to systematically use unitized audio signals as a digital catalyst for rotational perspective shifts when meditating, going for a walk, or, as an overlay to any experience.
 
-**Binaural Beats** : An auditory illusion by way of different frequencies in either ear to simulate a new sound perceived which is not presented. Cognitive advantages for such states can improve frequency detection i.e. perceptual learning. By tuning ones perceptual learning capability in real time, one can increase their subjective experience of novelty when connecting with nature, learning a new skill, or unlearning habits.
+**Binaural Beats** : An auditory illusion by way of different frequencies in either ear to simulate a new sound perceived which is not presented. Cognitive advantages for such states can improve frequency detection i.e. perceptual learning. By tuning ones perceptual learning capability in real time, one can increase their subjective experience of novelty when connecting with nature, learning a new skill, unlearning habits, or boosting mindfulness.
 
 **Cybernetics** : The scientific study of control and communication in the animal and the machine. 
 
-**Quantum Cognition** : The tool is meant to simulate a [Hadamard gate](https://www.quantum-inspire.com/kbase/hadamard/) used in quantum computing, but for ones mind. Hadamard gates create a superposition point between 2 basis states (e.g. frequencies) whereby one is able to expand the possibilities of environmental navigation through optimal perceptual learning and action. The concept, in an increasingly connected mind, practice holding competing trajectories of thought to aid in empathetic decision making.
+**Quantum Cognition** : The tool is meant to simulate a [Hadamard gate](https://www.quantum-inspire.com/kbase/hadamard/) used in quantum computing, but for ones mind. Hadamard gates create a superposition point between 2 basis states (e.g. frequencies) whereby one is able to expand the possibilities of environmental navigation through optimal perceptual learning and action. The concept: in an increasingly connected mind, practice holding competing trajectories of thought to aid in empathetic decision making.
 
 <p align="center">
   <img width="300" height="300" src="imgs/hadamard.png">
 </p>
 
-## Philosophy
-Open sourcing the concept was the first intention, as consciousness tools should be open and available.
-
-Engaging in open conversation around building for human cognition enhancements.
-
-Documented process for optimal community building around experimental explorers and other audio / livecoding ecosystem.
-
-Seed more people in calm computing states. The greater the collective synchronous, the more mindful we can be for designing systems that work.
+## Philosophy (a WIP)
+* Open sourcing the concept was the first intention, as consciousness tools should be open and available.
+* Engaging in open conversation around building for human cognition enhancements.
+* Documented process for optimal community building around experimental explorers and other audio / livecoding ecosystem.
+* Seed more people in calm computing states. The greater the collective synchronous, the more mindful we can be for designing systems that work.
+* WIP / Submit PR
 
 ### Possible Modes of Play
 * *Single*: Following single signal trajectory tuned via reinforcement agent to neurofeedback (or manual via tuning knob)
-* *Layered*: Adding sound dimensions for optimal composition supported via scynth audio server
+* *Composed*: Adding sound dimensions for optimal composition supported via scynth audio server
 * *Multiplayer*: p2p connected soundscape for group / global meditative / practice experience
 
 ## Technologies Used
@@ -53,15 +51,19 @@ Seed more people in calm computing states. The greater the collective synchronou
 * [Rasberry pi](https://www.raspberrypi.org/)
 * [Socket.io](https://socket.io/)
 
-**Signal-Oriented Programming**: Signal programming is used in the same sense as dataflow programming, a signal is meant to represent a synchronous flow of data interrupted by an operating system. 
+**Signal-Oriented Programming**: Signal programming is used in the same sense as dataflow programming, whereby a signal is meant to represent a synchronous flow of data interrupted by an operating system. 
 
 <p align="center">
   <img width="700" height="500" src="imgs/beats.gif">
 </p>
 
-When a signal is sent, the operating system (brain) interrupts the target process' normal flow of execution to deliver the signal. The more ones mind is out of sync / less responsive to social constructs, the greater the use of this therapy as it's the simple and non intrusive.
+When a signal is sent, the operating system (brain) interrupts the target process' normal flow of execution to deliver the signal. 
 
-Excercised interruption requires an increase in more on this [here](https://medium.com/colloquium/is-it-ever-natural-to-be-late-5aed5ff11169)
+Hypothesis: The more ones mind is out of sync / less responsive to constructs, the greater the use of this therapy as it's the simple and non intrusive.
+
+Excercised interruption requires a reestablishment of normal time based protocols. 
+
+More on this [here](https://medium.com/colloquium/is-it-ever-natural-to-be-late-5aed5ff11169)
 
 ### Hardware Design Examples
 Integrated clean natural feel. Lab, spaceship, beach, or forest.
@@ -82,8 +84,8 @@ See [ARCHITECTURE.md]() for abstraction decisions.
 
 ### Device Setup
 * install Rasbian on SD
-* install Supercollider
-* install LCD Screen Show
+* install Supercollider on pi
+* install [LCD Screen Show](https://github.com/goodtft/LCD-show)
 * install Python 3
 * clone repo
 * create desktop icons for easy start
@@ -110,12 +112,11 @@ Currently under active development.
 #### Why not use a mobile app?
 * Possible Soundscape generated from the audio server [scsynth](https://supercollider.github.io/) can be live manipulated via neurofeedback.
 * Building process / customization is important for community of hackers.
-* Virtual Machine - to run an OS like [Urbit](https://urbit.org/)
+* Can run a Virtual Machine - for something like [Urbit](https://urbit.org/)
 * Binuaural beats require seperate isolated control of left vs. right ear frequency.
 * Positive constraint of not being connected to telecommunications, limited to BLE.
-* ARM based has RISC-V open instruction set
-* Easy loading of WASM as linear-signal transforms (future).
-* Sounds are generated on device and saved as a text file. E.g. kilobytes vs. MB, a scale of 10x in storage reduction.
+* Possible easy loading of WASM as linear-signal transforms (future).
+* Sounds are generated on device from saved text file. E.g. kilobytes vs. megabytes per experience.
 
 #### Sounds like digital drugs?
 > “This Snow Crash thing--is it a virus, a drug, or a religion?” 
