@@ -88,7 +88,7 @@ TODO: Run software without bci neurofeedback input.
 
 When a signal is sent, the operating system (brain) interrupts the target process' normal flow of execution to deliver the signal. 
 
-Hypothesis: The more ones mind is out of sync / less responsive to constructs, the greater the use of this therapy as it's the simple and non intrusive.
+Hypothesis: The more ones mind is out of sync / less responsive to constructs, the greater the use of this therapy as it's simple, non-intrusive, but requires techniques of meditation.
 
 Excercised interruption requires a reestablishment of normal time based protocols for synchrony assistance in cultural adaptation. More on this [here](https://medium.com/colloquium/is-it-ever-natural-to-be-late-5aed5ff11169)
 
