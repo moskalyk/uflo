@@ -26,10 +26,11 @@ Note: In order to use the python-supercollider, the liblo library is required fo
 ### Device Setup: Desktop with bci
 * clone repo `$ git clone https://github.com/moskalyk/uflo.git`
 * `$ cd uflo`
+* `$ cd synth`
 * `$ pip3 install -r requirements.txt`
 * open supercollider and run one of the [sounds](/sounds) (e.g. single_player.scd)
 * setup bci device
-* in one terminal, run one of socket [streamers](/streamer) to connect to a bci SDK, e.g. [blueberry](https://github.com/blueberryxtech/blueberry-js-sdk)
+* in one terminal, run one of the socket [streamers](/streamer) to connect to a bci SDK, e.g. [blueberry](https://github.com/blueberryxtech/blueberry-js-sdk)
 * run `python index.py --type singleplayer`
 * be present
 
