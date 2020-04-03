@@ -45,7 +45,7 @@ The experience can be graphed by recording hemodynamic response to frequency in 
   <img width="700" height="500" src="imgs/plot_fnirs.png">
 </p>
 
-## Abstraction: Multi-player
+## Abstraction: Multi-player (Matching experience)
 
 TODO: Something with p2p networking & fft covariance frequency matchmaking. e.g. Find your complimentary resonance.
 
