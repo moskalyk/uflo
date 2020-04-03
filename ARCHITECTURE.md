@@ -56,12 +56,12 @@ TODO: Something with p2p networking & fft covariance frequency matchmaking. e.g.
 </p>
 
 # Hardware Device Setup Goals
-Ease of extensibility for any stream of EEG, fNIRS, or haptic data stream that might be used as an input.
-Portable to carry with you.
-Offline-first to protect private data.
-Computational possibility (e.g. networking, intelligence, etc.).
-Customizable to steersman aesthetic.
-Accessible to hackers.
+* Ease of extensibility for any stream of EEG, fNIRS, or haptic data stream that might be used as an input.
+* Portable to carry with you.
+* Offline-first to protect private data.
+* Computational possibility (e.g. networking, intelligence, etc.).
+* Customizable to steersman aesthetic.
+* Accessible to hackers.
 
 ## Input Convolution
 5x5
