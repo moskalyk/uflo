@@ -9,17 +9,17 @@ The abstraction for which was chosen is meant to mimic a constrained version of 
   <img width="400" height="300" src="imgs/fourier.png">
 </p>
 
-During this process, the subtle agent tunes paramaters by convolved inputs from a hemodynamic measurement, which adjusts to your flow to create more plasticity in the way the brain can 'accept' stimuli, tone and sound. A form of guided constraints or activations for hemodynamic rhythm.
+During this process, the subtle agent tunes paramaters by convolved inputs from a hemodynamic measurement, which adjusts to your flow to create more plasticity in the way the brain can 'accept' stimuli, tone and sound. A form of guided constraints or activations for hemodynamic rhythm whereby the various bands represent the different levels of sound abstraction.
 
 <p align="center">
   <img width="800" height="500" src="imgs/abstraction.png">
 </p>
 
-The guided sound 'waves' amount to a layered sound the user will listen to based on relative agent reward response.
+Each agent learns customization per explored abstraction band. The guided sound 'waves' amount to a layered sound the user can listen to based on relative agent reward response.
 
 ## Abstraction: Single Player (Path based)
 
-In the single trajectory, the agent only acts on the tuning of a single band. The variation of frequency of the band dictates the 3rd binaural sound perceived.
+In the single trajectory, the agent only acts on the tuning of a single band. The variation of frequency of the band dictates the 3rd binaural sound perceived, creating conditions for increased posibility of neural activations.
 
 ```
 frequency hz ranges
@@ -39,7 +39,7 @@ This process of creating difference between 2 frequency functions, can be abstra
   <img width="400" height="300" src="imgs/digInFirstFundamentalTheoremOfCalculus-figure0.svg">
 </p>
 
-The experience can be graphed by recording hemodynamic response to frequency in hz, with subtle changes to neuro response with subtle noticeable differences.
+The experience can be graphed by recording hemodynamic response to frequency in hz, with subtle changes noticeable to neuro response. More research and experiementation required.
 
 <p align="center">
   <img width="700" height="500" src="imgs/plot_fnirs.png">
