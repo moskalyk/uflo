@@ -9,7 +9,7 @@ The abstraction for which was chosen is meant to mimic a constrained version of 
   <img width="400" height="300" src="imgs/fourier.png">
 </p>
 
-During this process, the subtle agent guidance by variance based on neurofeedback measurement helps to create more plasticity in the way the brain can 'accepts' tone and sound via guided constraints. 
+During this process, the subtle agent tunes paramaters by convolved inputs from a hemodynamic measurement, which adjusts to your flow to create more plasticity in the way the brain can 'accept' stimuli, tone and sound. A form of guided constraints or activations for hemodynamic rhythm.
 
 <p align="center">
   <img width="800" height="500" src="imgs/abstraction.png">
@@ -47,7 +47,7 @@ The experience can be graphed by recording hemodynamic response to frequency in 
 
 ## Abstraction: Multi-player
 
-TODO: Something with p2p networking & fft covariance frequency matchmaking. Find your complimentary resonance.
+TODO: Something with p2p networking & fft covariance frequency matchmaking. e.g. Find your complimentary resonance.
 
 # Architecture Sub-system
 
@@ -55,7 +55,7 @@ TODO: Something with p2p networking & fft covariance frequency matchmaking. Find
   <img width="700" height="500" src="imgs/sub-system.png">
 </p>
 
-# Setup Goals
+# Hardware Device Setup Goals
 Ease of extensibility for any stream of EEG, fNIRS, or haptic data stream that might be used as an input.
 Portable to carry with you.
 Offline-first to protect private data.
