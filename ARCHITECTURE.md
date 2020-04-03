@@ -39,7 +39,7 @@ This process of creating difference between 2 frequency functions, can be abstra
   <img width="400" height="300" src="imgs/digInFirstFundamentalTheoremOfCalculus-figure0.svg">
 </p>
 
-The experience can be graphed by recording hemodynamic response to frequency in hz, with subtle changes noticeable to neuro response. More research and experiementation required.
+The experience can be graphed to observe the hemodynamic response relative to frequency shifts in hz, with subtle changes noticeable objective, and subjective by user. More research and experiementation required, possible use of Mean Opinion Score (MOS).
 
 <p align="center">
   <img width="700" height="500" src="imgs/plot_fnirs.png">
