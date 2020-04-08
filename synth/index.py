@@ -25,31 +25,30 @@ if args.mode == None:
 
 b = None
 
-def start_sc():
-
-	os.system("sudo sclang ../sounds/test.scd")
-
 if __name__ == '__main__':
 
 	from environment import BandSpace
 
-	print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-	experiment_name = input('What should we call this session? > ')
-	print("Beginning the Experiment: " + experiment_name)
-	print("In Mode: " + args.mode)
+	experiment_name = None
 
-	# os.system('sudo sclang ../sounds/single_player.scd &')
+	# check if bci device is connected
+	if args.device == 'bci':
+		print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+		experiment_name = input('What should we call this session? > ')
+		print("Beginning the Experiment: " + experiment_name)
+		print("In Mode: " + args.mode)
+
+		print('Looking for socket stream connected')
+		b.connect_bci()
 	
+	# TODO: start audio server in background process, this doesn't kill on exit :(
+	# os.system('sudo sclang ../sounds/source.scd &')
+
 	# intantiate bandspace
 	b = BandSpace(experiment_name)
 
 	try:
 		
-		# check if bci device is connected
-		if args.device == 'bci':
-			print('Looking for socket stream connected')
-			b.connect_bci()
-
 		# play bands on mode type
 		if args.mode == 'composed':
 			band_sequence = [1,2,3,4]

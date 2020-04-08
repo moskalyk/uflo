@@ -79,20 +79,20 @@ freqs = [
 	3.3,
 	5.5,
 	7.83,
-	# 9,
+	9,
 	14.3,
 	# 10,
-	# 14, # beta1 
+	14, # beta1 
 	# 18, # beta2
 
 	24,
 	# 
 	33.8,
 
-	40,
-	50,
-	70,
-	100
+	# 40,
+	# 50,
+	# 70,
+	# 100
 ]
 
 from supercollider import Server, Synth, Buffer, AudioBus, ADD_TO_TAIL, Group
@@ -482,7 +482,7 @@ class SoundSpace(object):
 		param = sound['param']
 		freq_i = random.randint(0, indices - 1)
 		new_param = freqs[freq_i]
-		print("Setting to " + str(new_param))
+		print("Setting to " + str(new_param) + 'hz.')
 		print(param)
 			# 	# set param
 
