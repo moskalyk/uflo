@@ -19,32 +19,36 @@ An excercise tool for those seeking a [free mind](https://www.youtube.com/watch?
 
 ## How to Run
 
-There are 2 approaches to running the software: 1) desktop (working), or 2) Rasberry Pi (almost)
+There are 2 approaches to running the software: 1) desktop (working), or 2) Rasberry Pi (half)
 
+Both require [SuperCollider](https://supercollider.github.io/download.html) to be installed.
 Note: In order to use the python-supercollider, the liblo library is required for the underlying OSC communications.
 
-### Device Setup: Desktop with bci
-* clone repo `$ git clone https://github.com/moskalyk/uflo.git`
-* `$ cd uflo`
-* `$ cd synth`
-* `$ pip3 install -r requirements.txt`
-* open supercollider and run one of the [sounds](/sounds) (e.g. single_player.scd)
-* setup bci device
-* in one terminal, run one of the socket [streamers](/streamer) to connect to a bci SDK, e.g. [blueberry](https://github.com/blueberryxtech/blueberry-js-sdk)
-* run `python index.py --type singleplayer`
+### 1. Device Setup: Desktop with bci (3 terminals)
+
+a. Terminal 1 : Run Audio Server 
+* `$ sudo sclang sounds/source.scd` # loads all SynthDefs
+
+b. Terminal 2: (not needed if running uflo without a bci, skip to #3)
+* connect bci device
+* run one of the socket [streamers](/streamer) to connect to a bci SDK, e.g. [blueberry](https://github.com/blueberryxtech/blueberry-js-sdk)
+
+c. Terminal 3 : Run uflo
+* `$ git clone https://github.com/moskalyk/uflo.git` # clone repo
+* `$ cd uflo/synth/` # go into the synth folder
+* `$ virtualenv venv && source venv/source/activate` # Create a virtual environment for your python packages
+* `$ pip3 install -r requirements.txt` # install dependencies
+* `$ python3 index.py --mode binaural` # run and choose mode
 * be present
 
-### Device Setup: Rasberry Pi
+### 2. Device Setup: Rasberry Pi
 * install Rasbian on SD
 * install Supercollider on pi
 * install [LCD Screen Show](https://github.com/goodtft/LCD-show)
 * install Python 3
-* clone repo `$ git clone https://github.com/moskalyk/uflo.git`
-* create desktop icons for easy start script
-* run `python index.py --type singleplayer`
+* It's easist to create desktop icons for easy start script from 
+*
 * be present
-
-TODO: Run software without bci neurofeedback input.
 
 ## Inspiration
 
