@@ -6,6 +6,7 @@ import numpy as np
 import random
 import time
 import os
+# from bands import sound_params
 
 action_set = [
 	"INCREASE_PARAM",
@@ -15,6 +16,8 @@ action_set = [
 
 DATA_LOCATION = os.getcwd() + "/raw_data/"
 SOUND_LOCATION = os.getcwd() + "/raw_sound/"
+
+print('outputting data to' + DATA_LOCATION)
 
 # TODO: abstract into seperate file
 sound_params = {
@@ -73,7 +76,8 @@ sound_params = {
 
 freqs = [
 	1,
-	# 5.5,
+	3.3,
+	5.5,
 	7.83,
 	# 9,
 	14.3,
@@ -111,46 +115,7 @@ fnirs_total = []
 
 freq_i = 2
 
-
-# TODO: abstract into seperate file
-sio = socketio.Client()
-
-while True:
-	try:
-		sio.connect('http://localhost:3003')
-		break;
-	except Exception as e:
-		print('Retrying connection...')
-	time.sleep( 2 )
-
 server = Server()
-
-def send_ping():
-    global start_timer
-    start_timer = time.time()
-    sio.emit('ping_from_client')
-
-
-@sio.event
-def connect():
-    print('connected to server')
-    send_ping()
-
-@sio.event
-def io_message(sid):
-    # print("message ", sid)
-    # print(sid['data'])
-    fnirs_buffer.append(sid['data'])
-    freq_buffer.append(freqs[freq_i])
-    # print("message ", data)
-
-@sio.event
-def pong_from_server(data):
-    global start_timer
-    latency = time.time() - start_timer
-    print('latency is {0:.2f} ms'.format(latency * 1000))
-    sio.sleep(1)
-    send_ping()
 
 # TODO: abstract into seperate utility file
 def moving_average(x, w):
@@ -159,7 +124,7 @@ def moving_average(x, w):
 
 class BandSpace(object):
 
-	def __init__(self, actions, experiment_name='ex', experiment_type='bin'):
+	def __init__(self, experiment_name='test', actions=3, experiment_type='bin'):
 		# self.agent = Agent(lr = 0.01, input_dims=[5], gamma= 0.99, n_actions=actions, l1_size = 128, l2_size = 128) 
 		self.band_history_scores = []
 		score = 0
@@ -172,10 +137,60 @@ class BandSpace(object):
 		freq_buffer = []
 
 
+	def connect_bci(self):
+
+		# TODO: abstract into seperate file
+		sio = socketio.Client()
+
+		while True:
+			try:
+				sio.connect('http://localhost:3003')
+				break;
+			except Exception as e:
+				print('Retrying connection...')
+			time.sleep( 2 )
+
+		def send_ping():
+		    global start_timer
+		    start_timer = time.time()
+		    sio.emit('ping_from_client')
+
+
+		@sio.event
+		def connect():
+		    print('connected to server')
+		    send_ping()
+
+		@sio.event
+		def io_message(sid):
+		    # print("message ", sid)
+		    # print(sid['data'])
+		    fnirs_buffer.append(sid['data'])
+		    freq_buffer.append(freqs[freq_i])
+		    # print("message ", data)
+
+		@sio.event
+		def pong_from_server(data):
+		    global start_timer
+		    latency = time.time() - start_timer
+		    print('latency is {0:.2f} ms'.format(latency * 1000))
+		    sio.sleep(1)
+		    send_ping()
+
+	def binaural(self):
+		self.mind_env.sound_space.add_sound(4)
+		# todo cycle sound
+		# self.mind_env.sound_space.add_sound(4)
+		while 1:
+			print('changing')
+			self.mind_env.sound_space.perturb_sound()
+			time.sleep(10)
+
 	def compose(self):
 		if self.experiment_type == 'bin':
 
-			self.clear_band_space()
+			# self.clear_band_space()
+			print('hooo')
 
 		else:
 			while 1:
@@ -460,6 +475,20 @@ class SoundSpace(object):
 			
 		self.synths.append(synth)
 		self.synth = synth
+
+	def perturb_sound(self):
+		indices = len(freqs)
+		sound = sound_params[self.synth_index]
+		param = sound['param']
+		freq_i = random.randint(0, indices - 1)
+		new_param = freqs[freq_i]
+		print("Setting to " + str(new_param))
+		print(param)
+			# 	# set param
+
+		self.synth.set(param, new_param)
+
+		# self.synth
 
 	def clear_all_synths(self):
 		print("Freeing group")

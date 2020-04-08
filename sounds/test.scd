@@ -1,4 +1,14 @@
-#!/usr/local/bin/sclang
+// #!/usr/local/bin/sclang
+
 s.boot;
+
 "hello world!".postln;
-().play;
+(
+t = Task({
+    loop {
+    	().play;
+    	"waiting...".postln;
+        2.wait;
+    }
+}).play;
+)

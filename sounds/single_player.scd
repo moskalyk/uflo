@@ -8,4 +8,3 @@ SynthDef(\bin, {|prime = 200, diff = 10, fade = 15, primetime = 20, difftime = 3
 	var env = EnvGen.kr(Env.asr(fade, level, fade), gate, doneAction:2);
 	Out.ar(0, [links, rechts] * env);
 }).add;
-)
