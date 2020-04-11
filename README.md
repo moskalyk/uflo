@@ -19,15 +19,18 @@ An excercise tool for those seeking a [free mind](https://www.youtube.com/watch?
 
 ## How to Run
 
-There are 2 approaches to running the software: 1) desktop (working), or 2) Rasberry Pi (half)
+There are 2 approaches to running the software: 1) desktop ✔️, or 2) Rasberry Pi ✔️
 
 Both require [SuperCollider](https://supercollider.github.io/download.html) to be installed.
 Note: In order to use the python-supercollider, the liblo library is required for the underlying OSC communications.
 
-### 1. Device Setup: Desktop with bci (3 terminals)
+OS X: brew install liblo
+Ubuntu: apt-get install liblo7 liblo-dev
+
+### 1. Device Setup: Desktop with/without bci (3 terminals)
 
 a. Terminal 1 : Run Audio Server 
-* `$ sudo sclang sounds/source.scd` # loads all SynthDefs
+* `$ sudo sclang sounds/source.scd` # loads all SynthDefs, you should hear a musical tone if audio is connected
 
 b. Terminal 2: (not needed if running uflo without a bci, skip to #3)
 * connect bci device
@@ -41,13 +44,14 @@ c. Terminal 3 : Run uflo
 * `$ python3 index.py --mode binaural` # run and choose mode
 * be present
 
-### 2. Device Setup: Rasberry Pi
-* install Rasbian on SD
+### 2. Device Setup: Rasberry Pi (currently, no bci)
+* install Rasbian on micro SD
 * install Supercollider on pi
+* install [Cython](https://cython.readthedocs.io/en/latest/src/quickstart/install.html)
 * install [LCD Screen Show](https://github.com/goodtft/LCD-show)
-* install Python 3
-* It's easist to create desktop icons for easy start script from 
-*
+* it's easiest to create [desktop icons](https://www.geeks3d.com/20191122/how-to-create-a-shortcut-on-the-raspbian-desktop/) for easy start scripts 
+* follow install instructions from 1.c
+* install [pytorch on pi from wheel package](https://medium.com/secure-and-private-ai-writing-challenge/a-step-by-step-guide-to-installing-pytorch-in-raspberry-pi-a1491bb80531) (note: must be done within virtualenv)
 * be present
 
 ## Inspiration
