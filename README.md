@@ -29,7 +29,7 @@ Ubuntu: `apt-get install liblo7 liblo-dev`
 
 ### 1. Device Setup: Desktop with/without bci (3 terminals)
 
-**a. Terminal 1 : Run Audio Server **
+**a. Terminal 1 : Run Audio Server**
 * `$ sudo sclang sounds/source.scd` # loads all SynthDefs, you should hear a musical tone if audio is connected
 
 **b. Terminal 2: BCI device** (not needed if running uflo without a bci, skip to #3)
