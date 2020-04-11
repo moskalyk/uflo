@@ -24,19 +24,19 @@ There are 2 approaches to running the software: 1) desktop ✔️, or 2) Rasberr
 Both require [SuperCollider](https://supercollider.github.io/download.html) to be installed.
 Note: In order to use the python-supercollider, the liblo library is required for the underlying OSC communications.
 
-OS X: brew install liblo
-Ubuntu: apt-get install liblo7 liblo-dev
+OS X: `brew install liblo`
+Ubuntu: `apt-get install liblo7 liblo-dev`
 
 ### 1. Device Setup: Desktop with/without bci (3 terminals)
 
-a. Terminal 1 : Run Audio Server 
+**a. Terminal 1 : Run Audio Server **
 * `$ sudo sclang sounds/source.scd` # loads all SynthDefs, you should hear a musical tone if audio is connected
 
-b. Terminal 2: (not needed if running uflo without a bci, skip to #3)
-* connect bci device
+**b. Terminal 2: BCI device** (not needed if running uflo without a bci, skip to #3)
+* run device 
 * run one of the socket [streamers](/streamer) to connect to a bci SDK, e.g. [blueberry](https://github.com/blueberryxtech/blueberry-js-sdk)
 
-c. Terminal 3 : Run uflo
+**c. Terminal 3 : Run uflo**
 * `$ git clone https://github.com/moskalyk/uflo.git` # clone repo
 * `$ cd uflo/synth/` # go into the synth folder
 * `$ virtualenv venv && source venv/source/activate` # Create a virtual environment for your python packages
@@ -50,7 +50,7 @@ c. Terminal 3 : Run uflo
 * install [Cython](https://cython.readthedocs.io/en/latest/src/quickstart/install.html)
 * install [LCD Screen Show](https://github.com/goodtft/LCD-show)
 * it's easiest to create [desktop icons](https://www.geeks3d.com/20191122/how-to-create-a-shortcut-on-the-raspbian-desktop/) for easy start scripts 
-* follow install instructions from 1.c
+* follow install instructions from ***1.a* & *1.c**
 * install [pytorch on pi from wheel package](https://medium.com/secure-and-private-ai-writing-challenge/a-step-by-step-guide-to-installing-pytorch-in-raspberry-pi-a1491bb80531) (note: must be done within virtualenv)
 * be present
 
