@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 import subprocess
 from multiprocessing import Process
 
@@ -63,7 +64,55 @@ if __name__ == '__main__':
 			b.binaural() 
 
 		if args.mode == 'multiplayer':
-			print('TODO')
+
+			print('')
+			print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+			print('           WARNING: EXPERIMENTAL       	  ')
+			print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+			print('')
+
+			print("Would you like to HOST or JOIN a session?")
+			host_join = input("'HOST' or 'JOIN' > ")
+
+			lower_host_join = host_join.lower()
+
+			if lower_host_join == "join":
+
+				# 
+				session_key = input("Please insert room key > ")
+
+				print('')
+				print('joining a session ....')
+				print('')
+
+				b.join(session_key)
+
+				time.sleep(2)
+				print('.')
+				time.sleep(1)
+				print('..')
+				time.sleep(1)
+				print('...')
+				time.sleep(1)
+				print('....')
+				time.sleep(2)
+				print('')
+				print('')
+				print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+				print('     you are now in the waiting room       ')
+				print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+				print('')
+				print('waiting for the host ... ')
+				print('')
+				print('')
+				# 
+				b.begin()
+
+			else:
+				print("Hosting a session")
+				# get key for room
+
+			# print('TODO')
 
 		print('Composing')
 		b.compose()
