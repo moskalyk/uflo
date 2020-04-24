@@ -6,6 +6,8 @@ import numpy as np
 import random
 import time
 import os
+import subprocess
+
 # from bands import sound_params
 
 action_set = [
@@ -17,7 +19,7 @@ action_set = [
 DATA_LOCATION = os.getcwd() + "/raw_data/"
 SOUND_LOCATION = os.getcwd() + "/raw_sound/"
 
-print('outputting data to' + DATA_LOCATION)
+# print('outputting data to' + DATA_LOCATION)
 
 # TODO: abstract into seperate file
 sound_params = {
@@ -115,7 +117,9 @@ fnirs_total = []
 
 freq_i = 2
 
-server = Server()
+server = Server(port=57110)
+
+sio = None
 
 # TODO: abstract into seperate utility file
 def moving_average(x, w):
@@ -135,6 +139,107 @@ class BandSpace(object):
 
 		fnirs_buffer = []
 		freq_buffer = []
+
+
+	def host(self):
+		subprocess.Popen(["node", "../streamer/networker.js"])
+
+		global sio
+		# TODO: abstract into seperate file
+		sio = socketio.Client()
+
+		while True:
+			try:
+				sio.connect('http://localhost:3001')
+				break;
+			except Exception as e:
+				print('Retrying connection...')
+			time.sleep( 2 )
+
+		def send_ping():
+		    global start_timer
+		    start_timer = time.time()
+		    sio.emit('ping_from_client')
+
+
+		@sio.event
+		def connect():
+		    print('connected to server')
+		    send_ping()
+
+		@sio.event
+		def update(hz):
+		    # print('connected to server')
+		    sio.emit('update', hz)
+
+		@sio.event
+		def hz_message(sid):
+			send_ping()
+		    # print("message ", sid)
+		    # print(sid['data'])
+			print('passing along')
+			print()
+			print(sid['hz'])
+		    # fnirs_buffer.append(sid['data'])
+		    # freq_buffer.append(freqs[freq_i])
+		    # print("message ", data)
+
+		@sio.event
+		def pong_from_server(data):
+		    global start_timer
+		    latency = time.time() - start_timer
+		    print('latency is {0:.2f} ms'.format(latency * 1000))
+		    sio.sleep(1)
+		    send_ping()
+
+
+	def join(self, key):
+
+		# call node program, pass in key
+		# subprocess.run(["ls", "-l"])
+		subprocess.Popen(["node", "../streamer/networker.js", key])
+
+		# TODO: abstract into seperate file
+		sio = socketio.Client()
+
+		while True:
+			try:
+				sio.connect('http://localhost:3002')
+				break;
+			except Exception as e:
+				print('Retrying connection...')
+			time.sleep( 2 )
+
+		def send_ping():
+		    global start_timer
+		    start_timer = time.time()
+		    sio.emit('ping_from_client')
+
+
+		@sio.event
+		def connect():
+		    print('connected to server')
+		    send_ping()
+
+		@sio.event
+		def hz_message(sid):
+		    # print("message ", sid)
+		    # print(sid['data'])
+			# print('passing along')
+			# print(sid['hz'])
+			print('Setting sound ' + str(sid['hz']) + 'hz')
+			self.mind_env.sound_space.set_sound('diff', sid['hz'])
+		    # fnirs_buffer.append(sid['data'])
+		    # freq_buffer.append(freqs[freq_i])
+		    # print("message ", data)
+
+		@sio.event
+		def pong_from_server(data):
+		    global start_timer
+		    latency = time.time() - start_timer
+		    print('latency is {0:.2f} ms'.format(latency * 1000))
+		    sio.sleep(1)
+		    send_ping()
 
 
 	def connect_bci(self):
@@ -182,7 +287,7 @@ class BandSpace(object):
 		# todo cycle sound
 		# self.mind_env.sound_space.add_sound(4)
 		while 1:
-			print('changing')
+			# print('changing')
 			self.mind_env.sound_space.perturb_sound()
 			time.sleep(10)
 
@@ -483,9 +588,10 @@ class SoundSpace(object):
 		freq_i = random.randint(0, indices - 1)
 		new_param = freqs[freq_i]
 		print("Setting to " + str(new_param) + 'hz.')
-		print(param)
-			# 	# set param
+		sio.emit('update', new_param)
+		self.set_sound(param, new_param)
 
+	def set_sound(self, param, new_param):
 		self.synth.set(param, new_param)
 
 		# self.synth
