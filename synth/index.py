@@ -46,9 +46,10 @@ if __name__ == '__main__':
 	# os.system('sudo sclang ../sounds/source.scd &')
 
 	# intantiate bandspace
-	b = BandSpace(experiment_name)
+	b = None
 
 	try:
+		b = BandSpace(experiment_name)
 		
 		# play bands on mode type
 		if args.mode == 'composed':
@@ -85,7 +86,7 @@ if __name__ == '__main__':
 				print('joining a session ....')
 				print('')
 
-				b.join(session_key)
+				
 
 				time.sleep(2)
 				print('.')
@@ -105,12 +106,20 @@ if __name__ == '__main__':
 				print('waiting for the host ... ')
 				print('')
 				print('')
+				b.join(session_key)
+				b.binaural() 
+
 				# 
-				b.begin()
+				# b.begin()
 
 			else:
 				print("Hosting a session")
 				# get key for room
+				os.popen("kill $(lsof -t -i :3001)")
+				b.host()
+				time.sleep()
+				print("Awaiting participants ... ")
+				b.binaural() 
 
 			# print('TODO')
 
