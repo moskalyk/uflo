@@ -9,7 +9,7 @@ s.boot;
 	"Ready for mindfulness...".postln;
 
 	// the sound synth
-	SynthDef(\bin, {|prime = 200, diff = 10, fade = 15, primetime = 20, difftime = 30, level= 0.4, gate = 1|
+	SynthDef(\bin, {|prime = 200, diff = 10, fade = 10, primetime = 20, difftime = 10, level= 0.4, gate = 1|
 		var freqtransition = VarLag.kr(prime, primetime, 0, \lin);
 		var links = SinOsc.ar(freqtransition);
 		var rechts = SinOsc.ar(freqtransition - VarLag.kr(diff, difftime, 0, \lin));
