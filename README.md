@@ -39,7 +39,7 @@ Ubuntu: `apt-get install liblo7 liblo-dev`
 **c. Terminal 3 : Run uflo**
 * `$ git clone https://github.com/moskalyk/uflo.git` # clone repo
 * `$ cd uflo/synth/` # go into the synth folder
-* `$ virtualenv venv && source venv/source/activate` # Create a virtual environment for your python packages
+* `$ virtualenv venv && source venv/bin/activate` # Create a virtual environment for your python packages
 * `$ pip3 install -r requirements.txt` # install dependencies
 * `$ python3 index.py --mode binaural` # run and choose mode
 * be present
