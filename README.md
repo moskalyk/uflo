@@ -41,7 +41,9 @@ Ubuntu: `apt-get install liblo7 liblo-dev`
 * `$ cd uflo/synth/` # go into the synth folder
 * `$ virtualenv venv && source venv/bin/activate` # Create a virtual environment for your python packages
 * `$ pip3 install -r requirements.txt` # install dependencies
-* `$ python3 index.py --mode binaural` # run and choose mode
+* `$ python3 index.py --mode composed --device bci` # run and choose mode
+* `$ python3 index.py --mode singleplayer` # run and choose mode
+* `$ python3 index.py --mode multiplayer` # run and choose mode
 * be present
 
 ### 2. Device Setup: Rasberry Pi (currently, no bci)
@@ -78,8 +80,8 @@ Ubuntu: `apt-get install liblo7 liblo-dev`
 * WIP / Submit PR
 
 ### Possible Modes of Play
-* *Single*: Following single signal trajectory tuned via reinforcement agent to neurofeedback (or manual via tuning knob)
 * *Composed*: Adding sound dimensions for optimal composition supported via scynth audio server
+* *Single*: Following single signal trajectory tuned via reinforcement agent to neurofeedback (or manual via tuning knob)
 * *Multiplayer*: p2p connected soundscape for group / global meditative / practice experience
 
 ## Technologies Used
@@ -125,8 +127,6 @@ What began as a concept at an [EthGlobal hackathon](https://devpost.com/software
 Currently under active development.
 
 ### TODOS
-- [ ] easy start script
-- [ ] multiplayer mode
 - [ ] refactor to load different flow paths
 
 ### Other Relevant Research / Tools
