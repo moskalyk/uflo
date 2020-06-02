@@ -8,10 +8,10 @@ if __name__ == '__main__':
 	b = BandSpace(3, experiment_name)
 
 	try:
-		# band_sequence = [1,2,3,4]
+		band_sequence = [1,2,3,4]
 		# band_sequence = [0, 1, 2, 3]
 		# band_sequence = [0,1,2,3]
-		band_sequence = [4]
+		# band_sequence = [4]
 
 		for i in range(len(band_sequence)):
 			print('Playing next band with index ' + str(i))
