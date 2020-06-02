@@ -23,6 +23,7 @@ Then run,
 $ node forwarder.js
 
 ```
+Note: there is currently a filter for values less than 5000.
 
 ### networker.js: Used to connect multiple users with a 'room' key
 
@@ -31,5 +32,5 @@ Due to the fact that uflo can only run a single connection instance to the audio
 First run `$ python3 index.py --mode multiplayer`, then run the following
 
 ```
-$ node
+tbd
 ```
