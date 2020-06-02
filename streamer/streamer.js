@@ -5,20 +5,17 @@ const io = require('socket.io')(http);
 const PORT = 3002;
 
 io.on('connection', function(socket){
-	console.log('a user connected');
+    console.log('a user connected');
 
     process.stdin.on('data', function(chunk) {
         const line = chunk.toString();
         const parse = line.split('FEED:');
-        // console.log('data')
-
-        // console.log(chunk)
         if(parse.length > 1 ){
-        	const data = parse[1];
-        	const rawInt = data.split('.0')[0];
-        	console.log('-------------------')
+            const data = parse[1];
+            const rawInt = data.split('.0')[0];
+            console.log('-------------------')
             console.log({data: rawInt})
-        	socket.emit('io_message', {data: rawInt});
+            socket.emit('io_message', {data: rawInt});
         }
     });
 });
