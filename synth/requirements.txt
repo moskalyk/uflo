@@ -26,3 +26,6 @@ supercollider==0.0.4
 tqdm==4.36.1
 urllib3==1.24.2
 websocket-client==0.57.0
+torch==1.5.0
+torchvision==0.6.0
+
