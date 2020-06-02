@@ -103,9 +103,9 @@ import random
 from matplotlib import pyplot as plt
 import socketio
 
-n_episodes = 5
+n_episodes = 3
 episode_length = 2
-observation_time_delay = 10
+observation_time_delay = 7
 observeration_window = 15
 moving_average_window = 5
 
@@ -119,7 +119,37 @@ freq_i = 2
 
 server = Server(port=57110)
 
-sio = None
+# sio = None
+
+# WARNING: hack, but a small one
+sio = socketio.Client()
+sio.connect('http://localhost:3002')
+
+# server = Server()
+
+def send_ping():
+    global start_timer
+    start_timer = time.time()
+    sio.emit('ping_from_client')
+
+
+@sio.event
+def connect():
+    print('connected to server')
+    send_ping()
+
+@sio.event
+def io_message(sid):
+    fnirs_buffer.append(sid['data'])
+
+@sio.event
+def pong_from_server(data):
+    global start_timer
+    latency = time.time() - start_timer
+    print('latency is {0:.2f} ms'.format(latency * 1000))
+    sio.sleep(1)
+    send_ping()
+
 
 # TODO: abstract into seperate utility file
 def moving_average(x, w):
@@ -254,7 +284,10 @@ class BandSpace(object):
 
 		while True:
 			try:
-				sio.connect('http://localhost:3003')
+				sio.connect('http://localhost:3002')
+				# print('gunna wait for data')
+				# time.sleep(5)
+				print('connected')
 				break;
 			except Exception as e:
 				print('Retrying connection...')
@@ -275,6 +308,7 @@ class BandSpace(object):
 		def io_message(sid):
 		    # print("message ", sid)
 		    # print(sid['data'])
+		    # print(len(fnirs_buffer))
 		    fnirs_buffer.append(sid['data'])
 		    freq_buffer.append(freqs[freq_i])
 		    # print("message ", data)
@@ -360,7 +394,7 @@ class BandSpace(object):
 		print(moving_average_window)
 		# prin(print)
 		agent = Agent(lr = 0.1, input_dims=[ input_dims ], gamma= 0.99, n_actions=3, l1_size = 128, l2_size = 128) 
-
+		# print('breaks hurr')
 		score_history = []
 		score = 0
 
@@ -373,6 +407,9 @@ class BandSpace(object):
 			observeration = self.mind_env.reset() 
 
 			while not done:
+				
+				print('OBSERVATION')
+				print(observeration)
 
 				action = agent.choose_action(observeration)
 				observeration_, reward, done = self.mind_env.step(action)
@@ -403,7 +440,7 @@ class BandSpace(object):
 
 class MindSpace(object):
 
-	def __init__(self, episode_length = episode_length, observation_time_delay = observation_time_delay, steady_count_max = 4, is_connected = False):
+	def __init__(self, episode_length = episode_length, observation_time_delay = observation_time_delay, steady_count_max = 2, is_connected = False):
 
 		self.sound_space = SoundSpace(is_connected)
 		self.possibleActions = action_set
@@ -624,42 +661,42 @@ class SoundSpace(object):
 
 		if action == "INCREASE_PARAM":
 
-			# # get old param
-			# old_param = self.synth.get(param)
+			# get old param
+			old_param = self.synth.get(param)
 
-			# # update param
-			# new_param = old_param * (1 + dev)
+			# update param
+			new_param = old_param * (1 + dev)
 
-			# print("checking_max")
+			print("checking_max")
 
-			if freq_i is not (len(freqs) - 1):
-			# 	# if new_param > default
-				freq_i += 1
-				new_param = freqs[freq_i]
-				print('Setting ' + param + " to " + str(new_param))
-			# 	# set param
+			if not new_param > default * 1.5:
+				# if new_param > default
 
+				print('Setting ' + param + " to " + str(new_param) + " from " + str(old_param))
+				# set param
 				self.synth.set(param, new_param)
-			else:
-				self.is_steady = True
 
 			print("( + ) INCREASE_PARAM")
 			# self.group.free()
 
 		elif action == "DECREASE_PARAM":
 
-			if freq_i is not 0:
+			# get old param
+			old_param = self.synth.get(param)
 
-				freq_i -= 1
-				new_param = freqs[freq_i]
-				print('Setting ' + param + " to " + str(new_param))
-			# 	# set param
+			# update param
+			new_param = old_param * (1 - dev)
 
+			print("checking_min")
+			if not new_param < default * 1.5:
+
+				print(new_param > default * 1.5)
+
+				print('Setting ' + param + " to " + str(new_param) + " from " + str(old_param))
+
+			# set param
 				self.synth.set(param, new_param)
-			else:
-				self.is_steady = True
 			print("( - ) DECREASE_PARAM")
-			# self.group.free()
 
 		elif action == "SAME_PARAM":
 

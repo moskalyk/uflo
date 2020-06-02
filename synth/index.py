@@ -53,6 +53,7 @@ if __name__ == '__main__':
 
 			print('Looking for socket stream connected')
 			b.connect()
+			# print('YES CONNECTED')
 		
 		# play bands on mode type
 		if args.mode == 'composed':
