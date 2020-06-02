@@ -10,6 +10,7 @@ io.on('connection', function(socket){
     process.stdin.on('data', function(chunk) {
         const line = chunk.toString();
         const parse = line.split('FEED:');
+        console.log(line)
         if(parse.length > 1 ){
         	const data = parse[1];
         	const rawInt = data.split('.0')[0];

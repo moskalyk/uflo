@@ -16,7 +16,7 @@ feed.on('ready', () => {
 	})
 })
 
-IS_HOST && setInterval(() => feed.append({hz: Math.floor(Math.random() * 5)}), 10000)
+IS_HOST && setInterval(() => feed.append({hz: Math.floor(Math.random() * 5)}), 1000)
 
 
 

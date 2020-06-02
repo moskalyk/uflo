@@ -18,7 +18,7 @@ if args.mode == None:
 	print()
 	print('i.e. ' + help)
 	print()
-	print('example: $ python3 index.py --mode binaural')
+	print('example: $ python3 index.py --mode singleplayer')
 	print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 	print()
 	print('~uflo with love.')
@@ -32,15 +32,6 @@ if __name__ == '__main__':
 
 	experiment_name = None
 
-	# check if bci device is connected
-	if args.device == 'bci':
-		print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-		experiment_name = input('What should we call this session? > ')
-		print("Beginning the Experiment: " + experiment_name)
-		print("In Mode: " + args.mode)
-
-		print('Looking for socket stream connected')
-		b.connect_bci()
 	
 	# TODO: start audio server in background process, this doesn't kill on exit :(
 	# os.system('sudo sclang ../sounds/source.scd &')
@@ -49,7 +40,19 @@ if __name__ == '__main__':
 	b = None
 
 	try:
-		b = BandSpace(experiment_name)
+		# b = BandSpace(experiment_name, )
+		b = BandSpace(experiment_name=experiment_name, actions=3, experiment_type='bin', is_connected = args.device == 'bci')
+
+
+		# check if bci device is connected
+		if args.device == 'bci':
+			print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+			experiment_name = input('What should we call this session? > ')
+			print("Beginning the Experiment: " + experiment_name)
+			print("In Mode: " + args.mode)
+
+			print('Looking for socket stream connected')
+			b.connect()
 		
 		# play bands on mode type
 		if args.mode == 'composed':
@@ -60,8 +63,9 @@ if __name__ == '__main__':
 				b.new_band(band_sequence[i]) 
 
 
-		if args.mode == 'binaural':
-
+		if args.mode == 'singleplayer':
+			# 
+			# b.
 			b.binaural() 
 
 		if args.mode == 'multiplayer':
@@ -117,7 +121,7 @@ if __name__ == '__main__':
 				# get key for room
 				os.popen("kill $(lsof -t -i :3001)")
 				b.host()
-				time.sleep()
+				time.sleep(1)
 				print("Awaiting participants ... ")
 				b.binaural() 
 

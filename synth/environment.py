@@ -128,17 +128,22 @@ def moving_average(x, w):
 
 class BandSpace(object):
 
-	def __init__(self, experiment_name='test', actions=3, experiment_type='bin'):
+	def __init__(self, experiment_name='test', actions=3, experiment_type='bin', is_connected = False):
 		# self.agent = Agent(lr = 0.01, input_dims=[5], gamma= 0.99, n_actions=actions, l1_size = 128, l2_size = 128) 
 		self.band_history_scores = []
 		score = 0
-		self.mind_env = MindSpace()
+		self.mind_env = MindSpace(is_connected = is_connected)
 		self.bands = []
 		self.experiment_name = experiment_name
 		self.experiment_type = experiment_type
 
 		fnirs_buffer = []
 		freq_buffer = []
+
+
+	# def begin_client(self):
+
+
 
 
 	def host(self):
@@ -242,7 +247,7 @@ class BandSpace(object):
 		    send_ping()
 
 
-	def connect_bci(self):
+	def connect(self):
 
 		# TODO: abstract into seperate file
 		sio = socketio.Client()
@@ -398,9 +403,9 @@ class BandSpace(object):
 
 class MindSpace(object):
 
-	def __init__(self, episode_length = episode_length, observation_time_delay = observation_time_delay, steady_count_max = 4):
+	def __init__(self, episode_length = episode_length, observation_time_delay = observation_time_delay, steady_count_max = 4, is_connected = False):
 
-		self.sound_space = SoundSpace()
+		self.sound_space = SoundSpace(is_connected)
 		self.possibleActions = action_set
 		self.history = [0]
 		self.episode_count = 0
@@ -517,7 +522,7 @@ class MindSpace(object):
 
 
 class SoundSpace(object):
-	def __init__(self):
+	def __init__(self, is_connected = False):
 		self.freq = 440
 		self.parts = 10
 
@@ -529,6 +534,8 @@ class SoundSpace(object):
 
 		self.synth = None
 		self.synths = []
+
+		self.is_connected = is_connected
 
 		
 
@@ -588,7 +595,11 @@ class SoundSpace(object):
 		freq_i = random.randint(0, indices - 1)
 		new_param = freqs[freq_i]
 		print("Setting to " + str(new_param) + 'hz.')
-		sio.emit('update', new_param)
+		
+		# TODO: distinguish if host or not
+		if self.is_connected == True:
+			sio.emit('update', new_param)
+
 		self.set_sound(param, new_param)
 
 	def set_sound(self, param, new_param):
